@@ -1,0 +1,36 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-nginx
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: "/"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: seu DNS
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: page-blue-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: "/blue"
+        backend:
+          service:
+            name: page-blue-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: "/green"
+        backend:
+          service:
+            name: page-green-service
+            port:
+              number: 80
+      
+
+    

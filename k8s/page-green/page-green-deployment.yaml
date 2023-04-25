@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: page-green-deployment
+spec:
+  selector:
+    matchLabels:
+      app: page-green
+  template:
+    metadata:
+      labels:
+        app: page-green
+    spec:
+      containers:
+        - name: page-green
+          image: fabricioveronez/web-page:green
+          imagePullPolicy: Always
+          resources: {}
+          ports:
+            - containerPort: 80
